@@ -26,24 +26,24 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
       - WDS_SOCKET_PORT=0
-#
-#  nginx:
-#    build:
-#      dockerfile: Dockerfile.local
-#    restart: unless-stopped
-#    volumes:
-#      - ./docker/certs/local:/etc/nginx/certs
-#    ports:
-#      - 80:80
-#      - 443:443
-#      - 8443:8443
-#    environment:
-#      NODE_ENV: dev
-#      NGINX_HOST: ${NGINX_HOST_LOCAL}
-#      NGINX_PORT: ${NGINX_PORT_LOCAL}
-#      NGINX_CERT_CRT: ${NGINX_CERT_CRT_LOCAL}
-#      NGINX_CERT_KEY: ${NGINX_CERT_KEY_LOCAL}
-#
+
+  nginx:
+    build:
+      dockerfile: Dockerfile.local
+    restart: unless-stopped
+    volumes:
+      - ./docker/certs/local:/etc/nginx/certs
+    ports:
+      - 80:80
+      - 443:443
+      - 8443:8443
+    environment:
+      NODE_ENV: dev
+      NGINX_HOST: ${NGINX_HOST_LOCAL}
+      NGINX_PORT: ${NGINX_PORT_LOCAL}
+      NGINX_CERT_CRT: ${NGINX_CERT_CRT_LOCAL}
+      NGINX_CERT_KEY: ${NGINX_CERT_KEY_LOCAL}
+
 #
 #  mysql:
 #    image: mysql:8.0.20
