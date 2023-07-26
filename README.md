@@ -40,7 +40,7 @@ docker-compose -f docker-compose.yaml -f docker-compose.local.yaml up
 
 ```text
 # local domains for production and development
-127.0.0.1 courselab.com
+127.0.0.1 courselabcourselabcourselabcourselabcourselab.com
 # etc...
 ```
 
