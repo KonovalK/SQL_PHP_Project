@@ -57,7 +57,8 @@ class QueryBuilder
                 return $sql;
                 break;
             case 'insert':
-                $sql = "INSERT INTO {$this->table} ($this->fields) VALUES ('{$this->values}')";
+                $sql = "INSERT INTO {$this->table} VALUES (\"{$this->values}\")";
+                echo "<br>".$sql;
                 return $sql;
                 break;
             case 'update':
@@ -97,15 +98,15 @@ class QueryBuilder
         return $this->params;
     }
 
-    public function insert($table, $fields = " "): self
+    public function insert($values, $table): self
     {
         $this->type = "insert";
         $this->table = $table;
-        $fields_string = $fields;
-        if (is_array($fields)) {
-            $fields_string = implode(", ", $fields);
+        $values_string = $values;
+        if (is_array($values)) {
+            $values_string = implode("\", \"", $values);
         }
-        $this->fields = $fields_string;
+        $this->values = $values_string;
         return $this;
     }
 
