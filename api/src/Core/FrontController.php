@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controllers;
-use App\Core\Responce;
+namespace App\Core;
 use App\Core\Attributes\Route;
+use http\Encoding\Stream;
 use ReflectionClass;
 
 class FrontController
@@ -44,9 +44,12 @@ class FrontController
                 /** @var  $responce Responce */
                 $responce = $controller_object->$method();
                 if ($responce instanceof Responce) {
-                    echo $responce->getText();
+                    echo $responce->getTitle();
                 }
-
+                /** @var string $responce */
+                if(gettype($responce)==='string'){
+                    echo $responce;
+                }
             } else {
                 echo "Error 404";
             }

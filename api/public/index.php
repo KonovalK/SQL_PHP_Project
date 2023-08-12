@@ -1,6 +1,8 @@
 <?php
 
-use App\Controllers\FrontController;
+use App\Core\Core;
+use App\Core\Database\Database;
+use App\Core\FrontController;
 
 require_once ('../config/config.php');
 global $CoreParams;
@@ -15,8 +17,20 @@ spl_autoload_register(function ($classname){
     }
 
 });
-//$database=new Database($CoreParams['Database']['Host'], $CoreParams['Database']['Username'], $CoreParams['Database']['Password'], $CoreParams['Database']['Database']);
-//$database->connect();
+$core=Core::GetInstance();
+$core->Init();
+$core->Run();
+$core->Done();
+
+//\App\Core\StaticCore::Init();
+//\App\Core\StaticCore::Run();
+//\App\Core\StaticCore::Done();
+
+$record=new \App\Models\News();
+$record->title="title";
+$record->text="text";
+$record->date="12:54";
+$record->save();
 //
 //
 //$query=new QueryBuilder();
@@ -35,5 +49,14 @@ spl_autoload_register(function ($classname){
 //echo $query3->getSql()."<br>";
 
 
-$front_controller=new FrontController();
-$front_controller->run();
+//$front_controller=new FrontController();
+//$front_controller->run();
+//
+//function getObject():?\App\Core\Responce
+//{
+//    //return null;
+//    return new App\Core\Responce("title","<br>text");
+//}
+//$obj=getObject();
+//echo $obj?->getText();
+

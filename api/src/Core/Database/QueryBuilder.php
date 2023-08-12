@@ -18,7 +18,7 @@ class QueryBuilder
         $this->params = [];
     }
 
-    public function select($fields = "*"): QueryBuilder
+    public function select($fields = "*"): self
     {
         $this->type = "select";
         $fields_string = $fields;
@@ -29,7 +29,7 @@ class QueryBuilder
         return $this;
     }
 
-    public function from($table): QueryBuilder
+    public function from($table): self
     {
         $this->table = $table;
         return $this;
@@ -77,7 +77,7 @@ class QueryBuilder
         }
     }
 
-    public function where($where): QueryBuilder
+    public function where($where): self
     {
 //        if(is_a($where)){
 //
@@ -97,7 +97,7 @@ class QueryBuilder
         return $this->params;
     }
 
-    public function insert($table, $fields = " "): QueryBuilder
+    public function insert($table, $fields = " "): self
     {
         $this->type = "insert";
         $this->table = $table;
@@ -109,7 +109,7 @@ class QueryBuilder
         return $this;
     }
 
-    public function Values($values): QueryBuilder
+    public function Values($values): self
     {
         $values_string = $values;
         if (is_array($values)) {
@@ -119,14 +119,14 @@ class QueryBuilder
         return $this;
     }
 
-    public function update($table): QueryBuilder
+    public function update($table): self
     {
         $this->type = "update";
         $this->table = $table;
         return $this;
     }
 
-    public function set($set): QueryBuilder
+    public function set($set): self
     {
 //        if(is_a($set)){
 //
@@ -141,20 +141,20 @@ class QueryBuilder
         return $this;
     }
 
-    public function delete(): QueryBuilder
+    public function delete(): self
     {
         $this->type = "delete";
         return $this;
     }
 
-    public function join($join_type, $table): QueryBuilder
+    public function join($join_type, $table): self
     {
         $this->join_array[] = ["{$join_type}" => "{$table}"];  //I put join type for first argument of associative array and table name for second argument of associative array,
         // which I want to connect to my sql request, but I have any problems to conversation elements of array to string type.
         return $this;
     }
 
-    public function on($first_field, $second_field): QueryBuilder
+    public function on($first_field, $second_field): self
     {
         $this->on_array[] = ["{$first_field}" => "{$second_field}"]; //Same(
         return $this;
