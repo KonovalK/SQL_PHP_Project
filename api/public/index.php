@@ -27,9 +27,8 @@ $core->Done();
 //\App\Core\StaticCore::Done();
 
 $record=new \App\Models\News();
-$record->id=30;
-$record->title="title";
-$record->text="text";
+$record->title="MyTitle2";
+$record->text="MyText2";
 $date=date("Y-m-d H:i:s");
 $record->date="{$date}";
 $record->save();
